@@ -16,11 +16,11 @@ function generateMeme(image, topText, bottomText, topTextSize, bottomTextSize) {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.drawImage(image, 0, 0);
 
-  ctx.fillStyle = "white"; // fill is the inside
-  ctx.strokeStyle = "black"; // stroke is the border
+  ctx.fillStyle = "white";
+  ctx.strokeStyle = "black";
 
   // top text font size
-  fontSize = canvas.width * topTextSize; // set the font size realative to canvas width // just for testing
+  fontSize = canvas.width * topTextSize;
   ctx.font = `${fontSize}px bold Raleway`;
   ctx.textBaseline = "top"; // where do you measure the distance from the top https://www.w3schools.com/tags/canvas_textbaseline.asp
   ctx.textAlign = "center";
@@ -28,19 +28,18 @@ function generateMeme(image, topText, bottomText, topTextSize, bottomTextSize) {
   //top text
   ctx.lineWidth = fontSize / 25;
   topText.split("\n").forEach((t, i) => {
-    // we are selecting the array from each newline adn then we are rendering the both
-    ctx.fillText(t, canvas.width / 2, i * fontSize, canvas.width); // fill the inside of the text with the text x pos is half of that of canvas width and because we have text align center it centers it, y pos is i * fontSize it starts with 0 now because we have baseline as top it take the top 0 from the top, the next element in the array will have a index of 1 so it will be that plus the font size so it will not overlap the previous one, and the max width should not be more than canvas's width
-    ctx.strokeText(t, canvas.width / 2, i * fontSize, canvas.width); // same here but now we making the outline of the text to make it look like bordered
+    ctx.fillText(t, canvas.width / 2, i * fontSize, canvas.width);
+    ctx.strokeText(t, canvas.width / 2, i * fontSize, canvas.width);
   });
 
   // bottom text font size
-  fontSize = canvas.width * bottomTextSize; // set the font size realative to canvas width // just for testing
+  fontSize = canvas.width * bottomTextSize;
   ctx.font = `${fontSize}px bold Raleway`;
-  ctx.textBaseline = "top"; // where do you measure the distance from the top https://www.w3schools.com/tags/canvas_textbaseline.asp
+  ctx.textBaseline = "top";
   ctx.textAlign = "center";
 
   //bottom text
-  ctx.textBaseline = "bottom"; // where do you measure the distance from the bottom
+  ctx.textBaseline = "bottom";
   ctx.lineWidth = fontSize / 25;
   bottomText
     .split("\n")
@@ -74,16 +73,13 @@ function init() {
   canvas.width = canvas.height = 0;
 
   generateBtn.addEventListener("click", () => {
-    let reader = new FileReader(); // creating a new fileReader object
-    reader.readAsDataURL(imageInput.files[0]); // reading the data from the file[0] which is the first index of the uploaded file and reading it as binary
+    let reader = new FileReader();
+    reader.readAsDataURL(imageInput.files[0]);
     reader.onload = () => {
-      // after the image is finished reading and converting it as binary
-      let image = new Image(); // creating a new image object to store the image in it
-      image.src = reader.result; // storing the result of the reader in the image.src to display it
+      let image = new Image();
+      image.src = reader.result;
       image.onload = () => {
-        // it takes time for the image to load so after the image loads ...
         generateMeme(
-          // call the function with these attributes
           image,
           topTextInput.value.trim(),
           bottomTextInput.value.trim(),
