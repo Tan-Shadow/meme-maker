@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Meme Creator</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="top flex">
+        <textarea
+          placeholder="Type your bottom text here"
+          id="top-text-input"
+          cols="30"
+          rows="2"
+        ></textarea>
+        Text size:
+        <input
+          type="range"
+          id="top-text-input-size"
+          min="0.03"
+          max="0.1"
+          value="0.05"
+          step="0.01"
+        />
+      </div>
+      
+      <div class="bottom flex">
+        <textarea
+        placeholder="Type your bottom text here"
+        id="bottom-text-input"
+        cols="30"
+        rows="2"
+        ></textarea>
+        Text size:
+        <input
+        type="range"
+        id="bottom-text-input-size"
+        min="0.03"
+        max="0.1"
+        value="0.05"
+        step="0.01"
+        />
+      </p>
+      </div>
+  </div>
+
+    <div class="input">
+      <input type="file" id="image-input" accept="image/*" />
+    </div>
+
+    <div class="btn-container">
+      <button id="generate-btn">Generate</button>
+    </div>
+
+    <div class="canvas-div">
+    
+      <canvas id="canvas"></canvas>
+    </div>
+
+    <script src="./meme.js"></script>
+  </body>
+</html>
